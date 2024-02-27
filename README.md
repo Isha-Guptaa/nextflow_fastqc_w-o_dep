@@ -1,5 +1,5 @@
 # nextflow_fastqc_w-o_dep
-To run fastqc tool usinf nextflow by installing tool on existing environment:
+To run fastqc tool using nextflow by installing tool on existing environment:
 <br>
 PRE-REQUISITE:
 <br>
