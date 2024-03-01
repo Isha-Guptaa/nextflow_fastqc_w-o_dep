@@ -1,27 +1,27 @@
-params.reads = "${launchDir}/data/*.fq"
+params.input = "${launchDir}/data/*.fastq.gz"
 
 /**
  * Quality control fastq
  */
 
-reads_ch = Channel
-    .fromPath(params.reads)
+input_ch = Channel
+    .fromPath(params.input)
     
 process fastqc {
 
     input:
-    path read  
+    path input  
     
     output:
-    path "${read.baseName}_fastqc"
+    path "${input.baseName}_fastqc"
     
     script:
     """
-    mkdir -p ${read.baseName}_fastqc
-    fastqc ${read} -o ${read.baseName}_fastqc/
+    mkdir -p ${input.baseName}_fastqc
+    fastqc ${input} -o ${input.baseName}_fastqc/
     """
 }
 
 workflow {
-    fastqc(reads_ch)
+    fastqc(input_ch)
 }
